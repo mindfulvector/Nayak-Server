@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Users</title>
+</head>
+<body>
+    <h1>Online Users</h1>
+    <table border="1" cellspacing="0" cellpadding=10 valign="top">
+        <tr>
+            <th>User</th>
+            <th>Commands Sent</th>
+            <th>Messages Received</th>
+        </tr>
+        {% for user, info in users.items() %}
+        <tr>
+            <td>{{ user }}</td>
+            <td>
+                <ul>
+                    {% for command in info.commands %}
+                        <li>{{ command }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for message in info.messages_received %}
+                        <li>{{ message.timestamp }}: {{ message.message }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
